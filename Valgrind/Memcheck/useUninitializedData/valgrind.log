@@ -1,0 +1,53 @@
+==91135== Memcheck, a memory error detector
+==91135== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==91135== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==91135== Command: ./run
+==91135== Parent PID: 90948
+==91135== 
+==91135== Conditional jump or move depends on uninitialised value(s)
+==91135==    at 0x1091EB: case_uninitialized_value (main.c:12)
+==91135==    by 0x109273: main (main.c:28)
+==91135==  Uninitialised value was created by a heap allocation
+==91135==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==91135==    by 0x1091DE: case_uninitialized_value (main.c:11)
+==91135==    by 0x109273: main (main.c:28)
+==91135== 
+==91135== Syscall param write(buf) points to uninitialised byte(s)
+==91135==    at 0x497E887: write (write.c:26)
+==91135==    by 0x10923B: case_uninit_syscall (main.c:23)
+==91135==    by 0x10927D: main (main.c:29)
+==91135==  Address 0x1ffefffd30 is on thread 1's stack
+==91135==  in frame #1, created by case_uninit_syscall (main.c:20)
+==91135==  Uninitialised value was created by a stack allocation
+==91135==    at 0x10920B: case_uninit_syscall (main.c:20)
+==91135== 
+==91135== 
+==91135== HEAP SUMMARY:
+==91135==     in use at exit: 0 bytes in 0 blocks
+==91135==   total heap usage: 2 allocs, 2 frees, 1,032 bytes allocated
+==91135== 
+==91135== All heap blocks were freed -- no leaks are possible
+==91135== 
+==91135== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==91135== 
+==91135== 1 errors in context 1 of 2:
+==91135== Syscall param write(buf) points to uninitialised byte(s)
+==91135==    at 0x497E887: write (write.c:26)
+==91135==    by 0x10923B: case_uninit_syscall (main.c:23)
+==91135==    by 0x10927D: main (main.c:29)
+==91135==  Address 0x1ffefffd30 is on thread 1's stack
+==91135==  in frame #1, created by case_uninit_syscall (main.c:20)
+==91135==  Uninitialised value was created by a stack allocation
+==91135==    at 0x10920B: case_uninit_syscall (main.c:20)
+==91135== 
+==91135== 
+==91135== 1 errors in context 2 of 2:
+==91135== Conditional jump or move depends on uninitialised value(s)
+==91135==    at 0x1091EB: case_uninitialized_value (main.c:12)
+==91135==    by 0x109273: main (main.c:28)
+==91135==  Uninitialised value was created by a heap allocation
+==91135==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==91135==    by 0x1091DE: case_uninitialized_value (main.c:11)
+==91135==    by 0x109273: main (main.c:28)
+==91135== 
+==91135== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)

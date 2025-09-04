@@ -1,0 +1,27 @@
+==93153== Memcheck, a memory error detector
+==93153== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==93153== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==93153== Command: ./run
+==93153== Parent PID: 92780
+==93153== 
+==93153== Argument 'size' of function malloc has a fishy (possibly negative) value: -100
+==93153==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==93153==    by 0x1091A8: case_fishy_arguments (main.c:13)
+==93153==    by 0x10920B: main (main.c:24)
+==93153== 
+==93153== 
+==93153== HEAP SUMMARY:
+==93153==     in use at exit: 0 bytes in 0 blocks
+==93153==   total heap usage: 1 allocs, 1 frees, 4 bytes allocated
+==93153== 
+==93153== All heap blocks were freed -- no leaks are possible
+==93153== 
+==93153== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==93153== 
+==93153== 1 errors in context 1 of 1:
+==93153== Argument 'size' of function malloc has a fishy (possibly negative) value: -100
+==93153==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==93153==    by 0x1091A8: case_fishy_arguments (main.c:13)
+==93153==    by 0x10920B: main (main.c:24)
+==93153== 
+==93153== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

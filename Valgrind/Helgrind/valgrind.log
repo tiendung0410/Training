@@ -1,0 +1,65 @@
+==108636== Helgrind, a thread error detector
+==108636== Copyright (C) 2007-2017, and GNU GPL'd, by OpenWorks LLP et al.
+==108636== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==108636== Command: ./run
+==108636== Parent PID: 107866
+==108636== 
+==108636== ---Thread-Announcement------------------------------------------
+==108636== 
+==108636== Thread #3 was created
+==108636==    at 0x49969F3: clone (clone.S:76)
+==108636==    by 0x49978EE: __clone_internal (clone-internal.c:83)
+==108636==    by 0x49056D8: create_thread (pthread_create.c:295)
+==108636==    by 0x49061FF: pthread_create@@GLIBC_2.34 (pthread_create.c:828)
+==108636==    by 0x4853767: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==108636==    by 0x109235: main (main.c:20)
+==108636== 
+==108636== ---Thread-Announcement------------------------------------------
+==108636== 
+==108636== Thread #2 was created
+==108636==    at 0x49969F3: clone (clone.S:76)
+==108636==    by 0x49978EE: __clone_internal (clone-internal.c:83)
+==108636==    by 0x49056D8: create_thread (pthread_create.c:295)
+==108636==    by 0x49061FF: pthread_create@@GLIBC_2.34 (pthread_create.c:828)
+==108636==    by 0x4853767: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==108636==    by 0x109218: main (main.c:19)
+==108636== 
+==108636== ----------------------------------------------------------------
+==108636== 
+==108636== Possible data race during read of size 4 at 0x10C040 by thread #3
+==108636== Locks held: none
+==108636==    at 0x1091BE: thread_func (main.c:11)
+==108636==    by 0x485396A: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==108636==    by 0x4905AC2: start_thread (pthread_create.c:442)
+==108636==    by 0x4996A03: clone (clone.S:100)
+==108636== 
+==108636== This conflicts with a previous write of size 4 by thread #2
+==108636== Locks held: none
+==108636==    at 0x1091C7: thread_func (main.c:11)
+==108636==    by 0x485396A: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==108636==    by 0x4905AC2: start_thread (pthread_create.c:442)
+==108636==    by 0x4996A03: clone (clone.S:100)
+==108636==  Address 0x10c040 is 0 bytes inside data symbol "global_counter"
+==108636== 
+==108636== ----------------------------------------------------------------
+==108636== 
+==108636== Possible data race during write of size 4 at 0x10C040 by thread #3
+==108636== Locks held: none
+==108636==    at 0x1091C7: thread_func (main.c:11)
+==108636==    by 0x485396A: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==108636==    by 0x4905AC2: start_thread (pthread_create.c:442)
+==108636==    by 0x4996A03: clone (clone.S:100)
+==108636== 
+==108636== This conflicts with a previous write of size 4 by thread #2
+==108636== Locks held: none
+==108636==    at 0x1091C7: thread_func (main.c:11)
+==108636==    by 0x485396A: ??? (in /usr/libexec/valgrind/vgpreload_helgrind-amd64-linux.so)
+==108636==    by 0x4905AC2: start_thread (pthread_create.c:442)
+==108636==    by 0x4996A03: clone (clone.S:100)
+==108636==  Address 0x10c040 is 0 bytes inside data symbol "global_counter"
+==108636== 
+==108636== 
+==108636== Use --history-level=approx or =none to gain increased speed, at
+==108636== the cost of reduced accuracy of conflicting-access information
+==108636== For lists of detected and suppressed errors, rerun with: -s
+==108636== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)

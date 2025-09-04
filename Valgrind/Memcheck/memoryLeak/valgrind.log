@@ -1,0 +1,44 @@
+==107983== Memcheck, a memory error detector
+==107983== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==107983== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==107983== Command: ./run
+==107983== Parent PID: 107866
+==107983== 
+==107983== 
+==107983== HEAP SUMMARY:
+==107983==     in use at exit: 408 bytes in 5 blocks
+==107983==   total heap usage: 5 allocs, 0 frees, 408 bytes allocated
+==107983== 
+==107983== 100 bytes in 1 blocks are still reachable in loss record 1 of 5
+==107983==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==107983==    by 0x1091D9: case_still_reachable (main.c:27)
+==107983==    by 0x109213: main (main.c:35)
+==107983== 
+==107983== 100 bytes in 1 blocks are indirectly lost in loss record 2 of 5
+==107983==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==107983==    by 0x109189: case_indirectly_lost (main.c:15)
+==107983==    by 0x1091FF: main (main.c:33)
+==107983== 
+==107983== 100 bytes in 1 blocks are definitely lost in loss record 3 of 5
+==107983==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==107983==    by 0x10915E: case_definitely_lost (main.c:8)
+==107983==    by 0x1091F5: main (main.c:32)
+==107983== 
+==107983== 100 bytes in 1 blocks are definitely lost in loss record 4 of 5
+==107983==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==107983==    by 0x1091AC: case_possibly_lost (main.c:21)
+==107983==    by 0x109209: main (main.c:34)
+==107983== 
+==107983== 108 (8 direct, 100 indirect) bytes in 1 blocks are definitely lost in loss record 5 of 5
+==107983==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==107983==    by 0x10917B: case_indirectly_lost (main.c:14)
+==107983==    by 0x1091FF: main (main.c:33)
+==107983== 
+==107983== LEAK SUMMARY:
+==107983==    definitely lost: 208 bytes in 3 blocks
+==107983==    indirectly lost: 100 bytes in 1 blocks
+==107983==      possibly lost: 0 bytes in 0 blocks
+==107983==    still reachable: 100 bytes in 1 blocks
+==107983==         suppressed: 0 bytes in 0 blocks
+==107983== 
+==107983== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)

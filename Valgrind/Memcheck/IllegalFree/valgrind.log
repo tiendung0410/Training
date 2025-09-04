@@ -1,0 +1,63 @@
+==81174== Memcheck, a memory error detector
+==81174== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==81174== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==81174== Command: ./run
+==81174== Parent PID: 74737
+==81174== 
+==81174== Invalid free() / delete / delete[] / realloc()
+==81174==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==81174==    by 0x10919A: case_double_free (main.c:13)
+==81174==    by 0x1091F0: main (main.c:25)
+==81174==  Address 0x4a96040 is 0 bytes inside a block of size 16 free'd
+==81174==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==81174==    by 0x10918E: case_double_free (main.c:12)
+==81174==    by 0x1091F0: main (main.c:25)
+==81174==  Block was alloc'd at
+==81174==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==81174==    by 0x10917E: case_double_free (main.c:11)
+==81174==    by 0x1091F0: main (main.c:25)
+==81174== 
+==81174== Invalid free() / delete / delete[] / realloc()
+==81174==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==81174==    by 0x1091CF: case_free_invalid_pointer (main.c:20)
+==81174==    by 0x1091FA: main (main.c:26)
+==81174==  Address 0x4a96098 is 8 bytes inside a block of size 40 alloc'd
+==81174==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==81174==    by 0x1091B3: case_free_invalid_pointer (main.c:18)
+==81174==    by 0x1091FA: main (main.c:26)
+==81174== 
+==81174== 
+==81174== HEAP SUMMARY:
+==81174==     in use at exit: 0 bytes in 0 blocks
+==81174==   total heap usage: 2 allocs, 4 frees, 56 bytes allocated
+==81174== 
+==81174== All heap blocks were freed -- no leaks are possible
+==81174== 
+==81174== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==81174== 
+==81174== 1 errors in context 1 of 2:
+==81174== Invalid free() / delete / delete[] / realloc()
+==81174==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==81174==    by 0x1091CF: case_free_invalid_pointer (main.c:20)
+==81174==    by 0x1091FA: main (main.c:26)
+==81174==  Address 0x4a96098 is 8 bytes inside a block of size 40 alloc'd
+==81174==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==81174==    by 0x1091B3: case_free_invalid_pointer (main.c:18)
+==81174==    by 0x1091FA: main (main.c:26)
+==81174== 
+==81174== 
+==81174== 1 errors in context 2 of 2:
+==81174== Invalid free() / delete / delete[] / realloc()
+==81174==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==81174==    by 0x10919A: case_double_free (main.c:13)
+==81174==    by 0x1091F0: main (main.c:25)
+==81174==  Address 0x4a96040 is 0 bytes inside a block of size 16 free'd
+==81174==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==81174==    by 0x10918E: case_double_free (main.c:12)
+==81174==    by 0x1091F0: main (main.c:25)
+==81174==  Block was alloc'd at
+==81174==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==81174==    by 0x10917E: case_double_free (main.c:11)
+==81174==    by 0x1091F0: main (main.c:25)
+==81174== 
+==81174== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)

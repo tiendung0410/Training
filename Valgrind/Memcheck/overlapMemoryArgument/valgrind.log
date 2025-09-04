@@ -1,0 +1,27 @@
+==82375== Memcheck, a memory error detector
+==82375== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==82375== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==82375== Command: ./run
+==82375== Parent PID: 74737
+==82375== 
+==82375== Source and destination overlap in strcpy(0x1ffefffd20, 0x1ffefffd21)
+==82375==    at 0x484EF00: strcpy (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==82375==    by 0x1091A8: case_overlap_memcpy (main.c:13)
+==82375==    by 0x1091D1: main (main.c:18)
+==82375== 
+==82375== 
+==82375== HEAP SUMMARY:
+==82375==     in use at exit: 0 bytes in 0 blocks
+==82375==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==82375== 
+==82375== All heap blocks were freed -- no leaks are possible
+==82375== 
+==82375== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==82375== 
+==82375== 1 errors in context 1 of 1:
+==82375== Source and destination overlap in strcpy(0x1ffefffd20, 0x1ffefffd21)
+==82375==    at 0x484EF00: strcpy (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==82375==    by 0x1091A8: case_overlap_memcpy (main.c:13)
+==82375==    by 0x1091D1: main (main.c:18)
+==82375== 
+==82375== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
