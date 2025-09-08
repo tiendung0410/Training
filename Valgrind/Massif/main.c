@@ -13,14 +13,12 @@ void foo() {
     sleep(1); // Giữ cho massif snapshot
     free(a);
 }
-
 void bar() {
     char *b = malloc(300 * 1024); // 300KB
     memset(b, 'B', 300 * 1024);
     // intentionally NOT freeing b (memory leak)
     sleep(1);
 }
-
 void lots_of_buffers() {
     char *bufs[N_BUF];
     for (int i = 0; i < N_BUF; i++) {
@@ -32,15 +30,11 @@ void lots_of_buffers() {
         free(bufs[i]);
     }
 }
-
 int main() {
-    printf("Start heap test for Massif...\n");
 
     foo();             // 500KB alloc/free
     bar();             // 300KB alloc, không free
     lots_of_buffers(); // 10*100KB = 1MB alloc/free
-
-    printf("Done. Press Enter to exit.\n");
     getchar(); // Để massif có thể chụp snapshot sau peak
     return 0;
 }

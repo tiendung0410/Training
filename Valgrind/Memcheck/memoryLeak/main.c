@@ -1,7 +1,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <pthread.h>
 int *global_ptr = NULL; // For still reachable
 
 void case_definitely_lost() {
@@ -17,10 +17,15 @@ void case_indirectly_lost() {
     (void)b;
 }
 
+static void * thread_start(void *arg)
+{
+    //do nothing, just return
+    return NULL; // do not detach
+}
 void case_possibly_lost() {
-    int *c = malloc(100);
-    int *p = c + 1;
-    p = NULL;
+    pthread_t tid;
+    pthread_create(&tid, NULL, &thread_start, (void*)100);
+    // do not join
 }
 
 void case_still_reachable() {

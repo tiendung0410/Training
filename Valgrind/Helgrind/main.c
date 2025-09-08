@@ -13,7 +13,6 @@ void* thread_func(void* arg) {
     return NULL;
 }
 
-
 int main() {
     pthread_t t1, t2;
     pthread_create(&t1, NULL, thread_func, NULL);
