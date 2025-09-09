@@ -31,9 +31,9 @@
    ```
 
 4. **Invoke from Anywhere:**  
-   Add an alias to shell configuration file:  
+   Create a symbolic link to usr/local/bin:  
    ```bash
-   alias practicelog='/path/to/practicelog.sh'
+   sudo ln -s /path/to/practicelog.sh /usr/local/bin/practicelog
    ```
 
 5. **Schedule Automatic Runs:**  
