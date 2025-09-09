@@ -1,12 +1,12 @@
 # Valgrind Demo: Memcheck, Massif, Helgrind
 
-Repository này chứa các ví dụ thực hành với 3 công cụ chính của [Valgrind](https://valgrind.org/):
+This repository contains practical examples using three main tools of [Valgrind](https://valgrind.org/):
 
-- **Memcheck**: Phát hiện lỗi bộ nhớ động (memory errors) như leak, truy cập sai, giải phóng sai, dùng dữ liệu chưa khởi tạo, v.v.
-- **Massif**: Phân tích và đo lường việc sử dụng heap (heap profiler).
-- **Helgrind**: Phát hiện lỗi race condition trong chương trình đa luồng.
+- **Memcheck**: Detects dynamic memory errors such as leaks, invalid access, invalid free, use of uninitialized data, etc.
+- **Massif**: Analyzes and measures heap usage (heap profiler).
+- **Helgrind**: Detects race conditions in multithreaded programs.
 
-## Cấu trúc thư mục
+## Folder Structure
 
 ```
 Memcheck/
@@ -26,59 +26,59 @@ Helgrind/
     valgrind.log
 ```
 
-## Hướng dẫn sử dụng
+## Usage Guide
 
 ### 1. Memcheck
 
-Các ví dụ trong thư mục `Memcheck` minh họa các lỗi phổ biến về quản lý bộ nhớ:
+The examples in the `Memcheck` folder illustrate common memory management errors:
 
-- **accessInvalidMemory**: Truy cập vùng nhớ không hợp lệ (out-of-bounds, use-after-free).
-- **alignmentError**: Lỗi căn chỉnh bộ nhớ khi cấp phát.
-- **IllegalFree**: Giải phóng bộ nhớ sai (double free, free không đúng con trỏ gốc).
-- **InvalidMemoryArgument**: Đối số không hợp lệ cho các hàm cấp phát bộ nhớ.
-- **memoryLeak**: Các trường hợp rò rỉ bộ nhớ (definitely, indirectly, possibly lost, still reachable).
-- **mismatchMemoryManage**: Quản lý bộ nhớ không khớp (new/delete, malloc/free).
-- **overlapMemoryArgument**: Đối số bộ nhớ bị chồng lấn (overlapping memcpy).
-- **useUninitializedData**: Sử dụng dữ liệu chưa khởi tạo.
+- **accessInvalidMemory**: Invalid memory access (out-of-bounds, use-after-free).
+- **alignmentError**: Memory alignment errors during allocation.
+- **IllegalFree**: Invalid memory free (double free, freeing non-original pointer).
+- **InvalidMemoryArgument**: Invalid arguments for memory allocation functions.
+- **memoryLeak**: Various types of memory leaks (definitely, indirectly, possibly lost, still reachable).
+- **mismatchMemoryManage**: Mismatched memory management (new/delete, malloc/free).
+- **overlapMemoryArgument**: Overlapping memory arguments (overlapping memcpy).
+- **useUninitializedData**: Use of uninitialized data.
 
-**Chạy Memcheck:**
+**Run Memcheck:**
 ```sh
 valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind.log ./your_program
 ```
-- `--leak-check=full`: Kiểm tra chi tiết các trường hợp rò rỉ bộ nhớ.
-- `--show-leak-kinds=all`: Hiển thị tất cả các loại leak.
-- `--track-origins=yes`: Truy vết nguồn gốc lỗi bộ nhớ.
-- `--log-file=valgrind.log`: Ghi kết quả kiểm tra vào file log.
+- `--leak-check=full`: Detailed memory leak check.
+- `--show-leak-kinds=all`: Show all types of memory leaks.
+- `--track-origins=yes`: Track the origin of uninitialized values.
+- `--log-file=valgrind.log`: Save the output to a log file.
 
-Xem file `valgrind.log` trong từng thư mục để biết kết quả.
+Check the `valgrind.log` file in each folder for the results.
 
 ### 2. Massif
 
-Ví dụ trong [Massif/main.c](Massif/main.c) dùng để phân tích việc sử dụng heap.
+The example in [Massif/main.c](Massif/main.c) is used to analyze heap usage.
 
-**Chạy Massif:**
+**Run Massif:**
 ```sh
 valgrind --tool=massif ./your_program
 ms_print massif.out.<pid>
 ```
-Xem file [massif.out.108784](Massif/massif.out.108784) để tham khảo kết quả.
+See [massif.out.108784](Massif/massif.out.108784) for sample output.
 
 ### 3. Helgrind
 
-Ví dụ trong [Helgrind/main.c](Helgrind/main.c) minh họa lỗi race condition với biến toàn cục.
+The example in [Helgrind/main.c](Helgrind/main.c) demonstrates a race condition with a global variable.
 
-**Chạy Helgrind:**
+**Run Helgrind:**
 ```sh
 valgrind --tool=helgrind ./your_program
 ```
-Xem file [valgrind.log](Helgrind/valgrind.log) để biết kết quả.
+See [valgrind.log](Helgrind/valgrind.log) for the results.
 
-## Yêu cầu
+## Requirements
 
-- GCC để biên dịch các chương trình C/C++
-- Valgrind đã cài đặt trên hệ thống
+- GCC to compile C/C++ programs
+- Valgrind installed on your system
 
-## Tài liệu tham khảo
+## References
 
 - [Valgrind Documentation](https://valgrind.org/docs/manual/manual.html)
 - [Valgrind Quick Start](https://valgrind.org/docs/manual/quick-start.html)
