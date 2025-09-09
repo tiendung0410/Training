@@ -95,3 +95,9 @@ sudo rm -rf $debug_dir
 
 #command to make script can be called from anywhere
 #alias practicelog='$(pwd)/practicelog.sh'
+
+#crontab modification
+#crontab -e
+#Add the following line to run the script every hour
+#@hourly <path to practicelog.sh>
+#@hourly /home/tiendung/Documents/Training/BashScript/practicelog.sh
