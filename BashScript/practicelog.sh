@@ -1,10 +1,21 @@
 #!/bin/bash
 
-debug_dir=/home/tiendung/Documents/Training/ShellScript/practicelog
-log_storage_dir=/home/tiendung/Documents/Training/ShellScript/log_storage
-if [ ! -d "$debug_dir" ]; then
-	mkdir $debug_dir
+# Debuglog permission
+if [ "$(id | awk -F'[()]' '{print $2}')" != "root" ]; then
+    echo "Please run the tool with sudo permission!"
+	exit
 fi
+
+debug_dir=/home/practicelog
+log_storage_dir=/home/log_storage
+if [ ! -d "$debug_dir" ]; then
+	sudo mkdir $debug_dir
+fi
+
+if [ ! -d "$log_storage_dir" ]; then
+	sudo mkdir $log_storage_dir
+fi
+
 main_log=$debug_dir/main.log
 
 getTime()
@@ -65,10 +76,8 @@ getNetworkInfo()
 {
 	echo "------------------------Network Info--------------------------"
 	networkInfo_file=$debug_dir/network.log
-	ip link show > $networkInfo_file
-	while read LINE; do
-		echo $LINE
-	done < $networkInfo_file
+	nmcli device show > $networkInfo_file
+	grep -v '^IP6\.' "$networkInfo_file" | grep -v -- '--'
 }
 
 #Call function
@@ -81,9 +90,8 @@ cat $main_log
 
 #Compress log files
 current_date_time="`date +%Y%m%d%H%M%S`";
-cd /tmp
-tar -czvf $log_storage_dir/log$current_date_time.tar.gz $debug_dir > /dev/null 2>&1
-rm -rf $debug_dir
+sudo tar -czf $log_storage_dir/log$current_date_time.tar.gz $debug_dir > /dev/null 2>&1
+sudo rm -rf $debug_dir
 
 #command to make script can be called from anywhere
 #alias practicelog='$(pwd)/practicelog.sh'
