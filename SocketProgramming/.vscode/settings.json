@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "select.h": "c",
+        "string.h": "c"
+    }
+}
