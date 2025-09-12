@@ -8,6 +8,8 @@
 #include <arpa/inet.h>
 #include <string.h>
 
+#define PORT 8080
+
 typedef struct
 {
     int date;
@@ -18,7 +20,6 @@ typedef struct
 
 void main(int argc, char**argv)
 {
-    int port_num = atoi(argv[1]);
     int addr_size = sizeof(struct sockaddr_in);
     printf("Start of Server Process\n");
 
@@ -31,7 +32,7 @@ void main(int argc, char**argv)
     server_sock=socket(AF_INET,SOCK_DGRAM,0);
 
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(port_num);
+    server_addr.sin_port = htons(PORT);
     server_addr.sin_addr.s_addr = INADDR_ANY;
 
     bind(server_sock,(const struct sockaddr *)&server_addr,sizeof(server_addr));

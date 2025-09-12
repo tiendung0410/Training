@@ -10,6 +10,7 @@
 #include <string.h>
 
 #define RQ_LIMIT 5
+#define PORT 8080
 static int client_count = 0;
 typedef struct 
 {
@@ -56,8 +57,7 @@ void *connection_handler(void *argument)
 void main(int argc,char** argv)
 {
     printf("Start of Process!\n");
-    int port_num = atoi(argv[1]);
-    
+
     int sockfd,data_transfer_fd;
     struct sockaddr_in  server_addr;
     sockfd = socket(AF_INET,SOCK_STREAM,0);
@@ -66,7 +66,7 @@ void main(int argc,char** argv)
         printf("Failed to create socket\n");
     }
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(port_num);
+    server_addr.sin_port = htons(PORT);
     server_addr.sin_addr.s_addr = INADDR_ANY;
     
     if(bind(sockfd,(const struct sockaddr *)&server_addr,sizeof(server_addr))!=0)

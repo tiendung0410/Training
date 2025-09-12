@@ -7,9 +7,10 @@
 #include <unistd.h>
 #include <string.h>
 
+#define PORT 8080
+
 void main(int argc, char** argv)
 {
-    int port_num = atoi(argv[1]);
     char send_data[100];
     char received_data[100];
     printf("Start of Client Process\n");
@@ -17,7 +18,7 @@ void main(int argc, char** argv)
     int client_fd;
     struct sockaddr_in  server_addr;
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(port_num);
+    server_addr.sin_port = htons(PORT);
     server_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
     client_fd = socket(AF_INET,SOCK_STREAM,0);

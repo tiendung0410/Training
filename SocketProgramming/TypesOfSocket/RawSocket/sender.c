@@ -6,8 +6,8 @@
 #include <sys/socket.h>
 #include <netinet/ip.h>
 
-#define DEST_IP "10.46.172.56"   // IP máy nhận (B)
-#define SRC_IP  "10.46.172.56"   // IP máy gửi (A)
+#define DEST_IP "127.0.0.1"   // IP máy nhận (B)
+#define SRC_IP  "127.0.0.1"   // IP máy gửi (A)
 
 // Hàm tính checksum cho IP header (chuẩn RFC 791)
 unsigned short csum(unsigned short *buf, int nwords) {

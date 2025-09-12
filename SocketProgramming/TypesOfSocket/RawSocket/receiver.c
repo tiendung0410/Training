@@ -6,7 +6,7 @@
 #include <sys/socket.h>
 #include <netinet/ip.h>
 
-#define SRC_IP     "10.46.172.56"   // IP máy gửi (máy A)
+#define SRC_IP     "127.0.0.1"   // IP máy gửi (máy A)
 
 int main() {
     // 1. Tạo raw socket, protocol phải trùng với sender (253)

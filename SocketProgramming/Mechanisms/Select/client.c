@@ -11,7 +11,7 @@
 #include <fcntl.h>
 
 #define PORT 8080
-#define SERVER_IP "10.46.172.81"
+#define SERVER_IP "127.0.0.1"
 
 int client_fd;
 
