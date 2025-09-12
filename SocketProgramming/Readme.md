@@ -1,30 +1,28 @@
 # Socket Programming Training
 
-## Giới thiệu
-Thư mục này chứa các ví dụ thực hành về lập trình socket trên Linux, bao gồm các loại socket phổ biến (Internet, Unix, Raw) và các cơ chế xử lý kết nối (Blocking, Non-blocking, Poll, Select). Ngoài ra còn có bài tập mô phỏng trao đổi bảng định tuyến giữa hai thiết bị.
+## Introduction
+This directory contains practical examples of socket programming on Linux, covering common socket types (Internet, Unix, Raw) and connection handling mechanisms (Blocking, Non-blocking, Poll, Select). It also includes an assignment simulating routing table exchange between two devices.
 
-## Cấu trúc thư mục
-
-
+## Directory Structure
 
 - **TypesOfSocket/**  
-  Các ví dụ về các loại socket:
-  - `InternetSocket/`: Socket qua mạng TCP/IP (StreamSocket, DatagramSocket).
-  - `UnixSocket/`: Socket nội bộ hệ thống (StreamSocket, DatagramSocket).
-  - `RawSocket/`: Socket thô, thao tác trực tiếp với gói tin IP.
+  Examples of socket types:
+  - `InternetSocket/`: TCP/IP network sockets (StreamSocket, DatagramSocket).
+  - `UnixSocket/`: Local system sockets (StreamSocket, DatagramSocket).
+  - `RawSocket/`: Raw sockets, direct manipulation of IP packets.
 
 - **Assignment/**  
-  Bài tập mô phỏng trao đổi bảng định tuyến giữa hai thiết bị (deviceA, deviceB) sử dụng UDP socket.
+  Assignment simulating routing table exchange between two devices (deviceA, deviceB) using UDP sockets.
 
 - **Mechanisms/**  
-  Các cơ chế xử lý kết nối:
-  - `NonBlockingSocket/`: Ví dụ về socket không chặn (non-blocking).
-  - `Poll/`: Sử dụng hàm poll để xử lý nhiều kết nối, thực hành triển khai group chat.
-  - `Select/`: Sử dụng hàm select để xử lý nhiều kết nối, thực hành triển khai group chat.
+  Connection handling mechanisms:
+  - `NonBlockingSocket/`: Examples of non-blocking sockets.
+  - `Poll/`: Using the poll function to handle multiple connections, with a group chat implementation.
+  - `Select/`: Using the select function to handle multiple connections, with a group chat implementation.
 
-## Hướng dẫn build & chạy
+## Build & Run Instructions
 
-Các thư mục đều có file `Makefile` để biên dịch:
+Each folder contains a `Makefile` for compilation:
 ```sh
-make           # Biên dịch tất cả các file .c thành file .out
-make clean     # Xóa các file .out
+make           # Compile all .c files into .out executables
+make clean     # Remove all
